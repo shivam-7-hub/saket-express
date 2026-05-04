@@ -13,34 +13,18 @@
 </head>
 <body class="bg-gray-100 font-sans">
 
-    <header class="bg-white p-4 shadow-md sticky top-0 z-50">
-        <div class="flex justify-between items-center max-w-md mx-auto">
-            <div>
-                <h1 class="text-2xl font-black text-purple-700 italic">SAKET ZEPTO</h1>
-                <p class="text-[10px] text-gray-400 font-bold tracking-widest">FASTEST DELIVERY</p>
-            </div>
-            <div class="bg-yellow-100 px-3 py-1 rounded-full border border-yellow-300">
-                <span class="text-sm font-bold text-yellow-700">🛒 ₹<span id="cart-total">0</span></span>
-            </div>
+    <header class="bg-white p-4 shadow-md sticky top-0 z-50 text-center">
+        <h1 class="text-2xl font-black text-purple-700 italic">SAKET ZEPTO</h1>
+        <div class="bg-yellow-100 inline-block px-4 py-1 rounded-full mt-2 border border-yellow-300">
+            <span class="text-sm font-bold text-yellow-700">🛒 Cart: ₹<span id="cart-total">0</span></span>
         </div>
     </header>
 
     <main class="max-w-md mx-auto pb-28">
-        
         <div class="p-4">
-            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-5 text-white shadow-lg">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-5 text-white shadow-lg text-center">
                 <h2 class="text-lg font-bold">Maa Ke Liye Fresh Order!</h2>
-                <p class="text-xs opacity-80">Har cheez milegi sirf 10 minute mein</p>
-            </div>
-        </div>
-
-        <div class="px-4 py-2">
-            <h3 class="font-bold text-gray-800 mb-3 text-sm">Shop by Category</h3>
-            <div class="flex gap-4 overflow-x-auto category-scroll pb-2">
-                <div class="flex-shrink-0 text-center"><div class="bg-white shadow-sm p-3 rounded-2xl mb-1 text-xl">🥛</div><span class="text-[10px] font-bold">Dairy</span></div>
-                <div class="flex-shrink-0 text-center"><div class="bg-white shadow-sm p-3 rounded-2xl mb-1 text-xl">🍜</div><span class="text-[10px] font-bold">Snacks</span></div>
-                <div class="flex-shrink-0 text-center"><div class="bg-white shadow-sm p-3 rounded-2xl mb-1 text-xl">🥤</div><span class="text-[10px] font-bold">Cold Drinks</span></div>
-                <div class="flex-shrink-0 text-center"><div class="bg-white shadow-sm p-3 rounded-2xl mb-1 text-xl">🧼</div><span class="text-[10px] font-bold">Personal Care</span></div>
+                <p class="text-xs opacity-80">Fastest Delivery in Town</p>
             </div>
         </div>
 
@@ -48,20 +32,20 @@
             </div>
     </main>
 
-    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white border-t-2 border-gray-100 z-50">
-        <button onclick="sendOrder()" class="w-full max-w-md mx-auto bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-2xl shadow-2xl flex justify-between px-6 items-center">
-            <span>PLACE ORDER VIA WHATSAPP</span>
-            <span class="bg-green-900 px-3 py-1 rounded-lg text-sm">₹<span id="btn-total">0</span></span>
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white border-t z-50">
+        <button onclick="sendOrder()" class="w-full max-w-md mx-auto bg-green-600 text-white font-black py-4 rounded-2xl shadow-2xl flex justify-between px-6 items-center">
+            <span>PLACE ORDER</span>
+            <span class="bg-green-900 px-3 py-1 rounded-lg">₹<span id="btn-total">0</span></span>
         </button>
     </div>
 
     <script>
-        // Pakki working images from professional sources
+        // YAHAN DHAYAN DEIN: Ye naam wahi hain jo aapke folder mein hain
         const products = [
-            { id: 1, name: 'Amul Gold Milk', price: 33, weight: '500ml', img: 'https://images.livemint.com/img/2023/02/03/600x338/Amul_1675390978939_1675390979116_1675390979116.jpg' },
-            { id: 2, name: 'Maggi Masala', price: 14, weight: '70g', img: 'https://www.maggi.in/sites/g/files/p6bpno551/files/2023-07/Masala-Noodles-P1.png' },
-            { id: 3, name: 'Coca Cola', price: 40, weight: '750ml', img: 'https://www.coca-cola.com/content/dam/onvi-experience/in/en/product-relaunch/coca-cola-original-600ml.png' },
-            { id: 4, name: 'Lays Classic', price: 20, weight: '50g', img: 'https://m.media-amazon.com/images/I/719fpxI76CL._AC_SL1500_.jpg' }
+            { id: 1, name: 'Amul Gold Milk', price: 33, weight: '500ml', img: 'amul.jpg' },
+            { id: 2, name: 'Maggi Masala', price: 14, weight: '70g', img: 'maggi.jpg' },
+            { id: 3, name: 'Coca Cola', price: 45, weight: '750ml', img: 'coke.jpg' },
+            { id: 4, name: 'Lays Chips', price: 20, weight: '50g', img: 'lays.jpg' }
         ];
 
         let cart = {};
@@ -70,16 +54,13 @@
             const list = document.getElementById('product-list');
             list.innerHTML = products.map(p => `
                 <div class="product-card p-3 shadow-sm border border-gray-100">
-                    <div class="h-28 flex items-center justify-center mb-2">
-                        <img src="${p.img}" class="max-h-full max-w-full object-contain" onerror="this.src='https://via.placeholder.com/150?text=Saket+Item'">
-                    </div>
-                    <h4 class="font-bold text-xs text-gray-800 leading-tight h-8 overflow-hidden">${p.name}</h4>
-                    <p class="text-[10px] text-gray-400 mb-2">${p.weight}</p>
-                    <div class="flex justify-between items-center mt-auto">
+                    <img src="${p.img}" class="w-full h-24 object-contain mb-2 rounded-lg" onerror="this.src='https://via.placeholder.com/150?text=Item'">
+                    <h4 class="font-bold text-xs text-gray-800 leading-tight h-8">${p.name}</h4>
+                    <div class="flex justify-between items-center mt-2">
                         <span class="font-bold text-gray-900 text-sm">₹${p.price}</span>
-                        <div class="flex items-center bg-purple-50 rounded-lg border border-purple-200">
+                        <div class="flex items-center bg-purple-50 rounded-lg">
                             <button onclick="update(${p.id}, -1)" class="px-2 py-1 text-purple-700 font-bold">-</button>
-                            <span id="qty-${p.id}" class="px-2 text-xs font-bold">0</span>
+                            <span id="qty-${p.id}" class="px-1 text-xs font-bold">0</span>
                             <button onclick="update(${p.id}, 1)" class="px-2 py-1 text-purple-700 font-bold">+</button>
                         </div>
                     </div>
@@ -91,7 +72,6 @@
             cart[id] = (cart[id] || 0) + change;
             if (cart[id] < 0) cart[id] = 0;
             document.getElementById(`qty-${id}`).innerText = cart[id];
-            
             let total = 0;
             products.forEach(p => total += (cart[p.id] || 0) * p.price);
             document.getElementById('cart-total').innerText = total;
@@ -99,21 +79,17 @@
         }
 
         function sendOrder() {
-            let total = 0;
-            let items = "";
+            let total = 0; let items = "";
             products.forEach(p => {
                 if (cart[p.id] > 0) {
                     items += `• ${p.name} (${cart[p.id]} x ₹${p.price})\n`;
                     total += cart[p.id] * p.price;
                 }
             });
-
-            if (total === 0) { alert("Pehle items add karein!"); return; }
-
-            const msg = encodeURIComponent(`📦 *SAKET ZEPTO NEW ORDER*\n\n${items}\n💰 *Total Bill: ₹${total}*\n\n📍 Deliver to my address fast!`);
+            if (total === 0) { alert("Cart khali hai!"); return; }
+            const msg = encodeURIComponent(`📦 *SAKET ZEPTO ORDER*\n\n${items}\n💰 *Total: ₹${total}*`);
             window.open(`https://wa.me/918271038573?text=${msg}`);
         }
-
         render();
     </script>
 </body>
